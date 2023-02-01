@@ -12,13 +12,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val vm by viewModels<HelloWorldViewModel>()
+    private val viewModel by viewModels<ImageViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        vm.liveData.observe(this) {
+        viewModel.liveData.observe(this) {
             val imageView = findViewById<ImageView>(R.id.imageView)
             Glide
                 .with(this)
@@ -26,6 +26,6 @@ class MainActivity : AppCompatActivity() {
                 .into(imageView)
         }
 
-        vm.getData()
+        viewModel.getData()
     }
 }
